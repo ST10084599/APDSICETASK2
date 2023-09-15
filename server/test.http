@@ -1,0 +1,8 @@
+GET http://localhost:5050 HTTP/1.1
+###
+GET https://localhost:5050 HTTP/1.1
+###
+GET http://localhost:5050/records HTTP/1.1
+###
+GET https://localhost:5050/records HTTP/1.1
+###

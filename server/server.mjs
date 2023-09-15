@@ -4,14 +4,25 @@ import "./loadEnvironment.mjs";
 import https from "https";
 import path from "path";
 import fs from "fs";
+import dotenv from "dotenv";
+dotenv.config();
 
-const options = {
-    key: fs.readFileSync('icetasktwo/server/keys/private-key.pem'),    //Change Private Key Path here
-    cert: fs.readFileSync('icetasktwo/server/keys/certificate.pem'),  //Change Main Certificate Path here
-    }
+const key = process.env.PRIVAT_KEY
+const cert = process.env.CERT
+console.log(cert + " CERT AND KEY " + key)
+
+//const options = {
+ //   key: fs.readFileSync('icetasktwo/server/keys/private-key.pem'),    //Change Private Key Path here
+ //   cert: fs.readFileSync('icetasktwo/server/keys/certificate.pem'),  //Change Main Certificate Path here
+ //   }
   
-    //import records
-import records from "./routes/record.mjs";
+    
+const options = {
+  key: fs.readFileSync(key),    //Change Private Key Path here
+  cert: fs.readFileSync(cert),  //Change Main Certificate Path here
+  }
+
+import records from "./routes/record.mjs"
   
   const PORT = process.env.PORT || 5050;
   const app = express();
