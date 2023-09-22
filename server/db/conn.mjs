@@ -1,10 +1,6 @@
 import { MongoClient } from "mongodb";
-import dotnev from "dotenv"
-
-
-//const connectionString = "mongodb+srv://st10084599:Password123@cluster0.lcvcvkx.mongodb.net/";
-//const client = new MongoClient(connectionString);
-
+import dotenv from "dotenv"
+dotenv.config();
 const variable = process.env.MONGO_CONN_STRING
 console.log(variable);
 
@@ -18,10 +14,6 @@ try {
   console.error(e);
 }
 
-
-
   let db = conn.db("apds");
-
-
 
   export default db;

@@ -10,12 +10,6 @@ dotenv.config();
 const key = process.env.PRIVAT_KEY
 const cert = process.env.CERT
 console.log(cert + " CERT AND KEY " + key)
-
-//const options = {
- //   key: fs.readFileSync('icetasktwo/server/keys/private-key.pem'),    //Change Private Key Path here
- //   cert: fs.readFileSync('icetasktwo/server/keys/certificate.pem'),  //Change Main Certificate Path here
- //   }
-  
     
 const options = {
   key: fs.readFileSync(key),    //Change Private Key Path here
@@ -23,18 +17,25 @@ const options = {
   }
 
 import records from "./routes/record.mjs"
+import users from "./routes/user.mjs"
   
-  const PORT = process.env.PORT || 5050;
+  const PORT = process.env.PORT || 5052;
   const app = express();
   
   app.use(cors());
   app.use(express.json());
   
   
-  app.use("/records", records);
+  app.use("/record", records);
+  
+  app.use("/user", users);
   
   let server = https.createServer(options,app)
   
+  app.get('/record',(req,res)=>{
+    //res.send('HTTPS in ExpressJS')
+  })
+
   app.get('/',(req,res)=>{
     res.send('HTTPS in ExpressJS')
   })
